@@ -1,0 +1,429 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Colors - Light Mode */
+    --background: 0 0% 98%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 340 82% 52%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 340 82% 65%;
+    --primary-dark: 340 82% 40%;
+    --secondary: 274 76% 53%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 274 76% 65%;
+    --secondary-dark: 274 76% 40%;
+    --accent: 24 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 24 95% 65%;
+    --accent-dark: 24 95% 40%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 340 82% 52%;
+    --radius: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-full: 9999px;
+
+    /* Status Colors */
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --info: 221 83% 53%;
+    --verified: 142 76% 36%;
+    --pending: 38 92% 50%;
+    --rejected: 0 84% 60%;
+    --unverified: 215 16% 47%;
+
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+
+    /* Transitions */
+    --transition-fast: 150ms;
+    --transition-normal: 250ms;
+    --transition-slow: 350ms;
+
+    /* Typography */
+    --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-display: 'Poppins', system-ui, -apple-system, sans-serif;
+    --text-xs: 0.75rem;
+    --text-sm: 0.875rem;
+    --text-base: 1rem;
+    --text-lg: 1.125rem;
+    --text-xl: 1.25rem;
+    --text-2xl: 1.5rem;
+    --text-3xl: 1.875rem;
+    --text-4xl: 2.25rem;
+
+    /* Z-Index */
+    --z-dropdown: 100;
+    --z-sticky: 200;
+    --z-modal: 300;
+    --z-popover: 400;
+    --z-tooltip: 500;
+    --z-toast: 600;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 210 40% 98%;
+    --card: 222 47% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222 47% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 340 82% 52%;
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 340 82% 65%;
+    --primary-dark: 340 82% 40%;
+    --secondary: 274 76% 53%;
+    --secondary-foreground: 0 0% 100%;
+    --secondary-light: 274 76% 65%;
+    --secondary-dark: 274 76% 40%;
+    --accent: 24 95% 53%;
+    --accent-foreground: 0 0% 100%;
+    --accent-light: 24 95% 65%;
+    --accent-dark: 24 95% 40%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 340 82% 52%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  /* Focus styles */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  /* Selection */
+  ::selection {
+    @apply bg-primary/20 text-primary-foreground;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-muted;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/30 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/50;
+  }
+}
+
+@layer components {
+  /* Container */
+  .container-main {
+    @apply mx-auto max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Card variants */
+  .card-profile {
+    @apply relative overflow-hidden rounded-2xl bg-card shadow-lg transition-all duration-300;
+  }
+
+  .card-profile:hover {
+    @apply shadow-xl;
+  }
+
+  .card-swipe {
+    @apply absolute top-0 left-0 w-full h-full rounded-2xl bg-card shadow-xl;
+    touch-action: none;
+    user-select: none;
+  }
+
+  /* Button variants */
+  .btn-swipe {
+    @apply flex h-14 w-14 items-center justify-center rounded-full bg-card shadow-lg transition-all duration-200;
+  }
+
+  .btn-swipe:hover {
+    @apply scale-110 shadow-xl;
+  }
+
+  .btn-swipe:active {
+    @apply scale-95;
+  }
+
+  .btn-like {
+    @apply btn-swipe text-green-500;
+  }
+
+  .btn-pass {
+    @apply btn-swipe text-red-500;
+  }
+
+  .btn-super-like {
+    @apply btn-swipe text-blue-500;
+  }
+
+  /* Badge variants */
+  .badge-verification {
+    @apply inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium;
+  }
+
+  .badge-verified {
+    @apply badge-verification bg-verified/10 text-verified;
+  }
+
+  .badge-pending {
+    @apply badge-verification bg-pending/10 text-pending;
+  }
+
+  .badge-rejected {
+    @apply badge-verification bg-rejected/10 text-rejected;
+  }
+
+  .badge-unverified {
+    @apply badge-verification bg-unverified/10 text-unverified;
+  }
+
+  .badge-intention {
+    @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-xs font-medium;
+  }
+
+  .badge-dating {
+    @apply badge-intention bg-primary/10 text-primary;
+  }
+
+  .badge-friendship {
+    @apply badge-intention bg-secondary/10 text-secondary;
+  }
+
+  .badge-networking {
+    @apply badge-intention bg-accent/10 text-accent;
+  }
+
+  /* Interest tags */
+  .interest-tag {
+    @apply inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm font-medium bg-muted text-muted-foreground transition-colors;
+  }
+
+  .interest-tag-selected {
+    @apply interest-tag bg-primary text-primary-foreground;
+  }
+
+  /* Input styles */
+  .input-profile {
+    @apply flex h-10 w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .textarea-profile {
+    @apply flex min-h-[80px] w-full rounded-lg border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  /* Page transitions */
+  .page-enter {
+    @apply animate-fade-in animate-slide-in-from-bottom;
+  }
+
+  /* Loading skeleton */
+  .skeleton-card {
+    @apply animate-pulse space-y-4;
+  }
+
+  .skeleton-image {
+    @apply aspect-[3/4] w-full rounded-xl bg-muted;
+  }
+
+  .skeleton-text {
+    @apply h-4 w-full rounded bg-muted;
+  }
+
+  .skeleton-text-short {
+    @apply h-4 w-3/4 rounded bg-muted;
+  }
+
+  /* Mobile nav */
+  .mobile-nav-item {
+    @apply flex flex-col items-center gap-1 rounded-lg px-3 py-2.5 text-xs font-medium transition-colors;
+  }
+
+  .mobile-nav-item-active {
+    @apply mobile-nav-item text-primary;
+  }
+
+  .mobile-nav-item-inactive {
+    @apply mobile-nav-item text-muted-foreground;
+  }
+
+  /* Advertising */
+  .ad-banner {
+    @apply relative overflow-hidden rounded-xl border border-border bg-card;
+  }
+
+  .ad-label {
+    @apply absolute top-2 left-2 z-10 rounded-full bg-background/80 px-2 py-0.5 text-xs font-medium text-muted-foreground backdrop-blur-sm;
+  }
+
+  /* Chat bubbles */
+  .message-bubble {
+    @apply max-w-[75%] rounded-2xl px-4 py-2;
+  }
+
+  .message-bubble-sent {
+    @apply message-bubble rounded-tr-sm bg-primary text-primary-foreground;
+  }
+
+  .message-bubble-received {
+    @apply message-bubble rounded-tl-sm bg-muted text-muted-foreground;
+  }
+
+  /* Animation utilities */
+  .animate-in {
+    animation: animate-in 0.3s ease-out forwards;
+  }
+
+  @keyframes animate-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Stagger animation */
+  .stagger-1 { animation-delay: 50ms; }
+  .stagger-2 { animation-delay: 100ms; }
+  .stagger-3 { animation-delay: 150ms; }
+  .stagger-4 { animation-delay: 200ms; }
+  .stagger-5 { animation-delay: 250ms; }
+  .stagger-6 { animation-delay: 300ms; }
+
+  /* Glass morphism */
+  .glass {
+    @apply bg-background/80 backdrop-blur-md;
+  }
+
+  .glass-card {
+    @apply bg-card/80 backdrop-blur-xl border border-border/50;
+  }
+
+  /* Gradient text */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary via-secondary to-accent bg-clip-text text-transparent;
+  }
+
+  /* Hide scrollbar but keep scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  /* Text balance */
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Touch targets */
+  .touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+
+  /* Safe areas */
+  .safe-top {
+    padding-top: env(safe-area-inset-top);
+  }
+
+  .safe-bottom {
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
+  .safe-left {
+    padding-left: env(safe-area-inset-left);
+  }
+
+  .safe-right {
+    padding-right: env(safe-area-inset-right);
+  }
+
+  /* Line clamp */
+  .line-clamp-1 {
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Aspect ratios */
+  .aspect-card {
+    aspect-ratio: 3 / 4;
+  }
+
+  .aspect-banner {
+    aspect-ratio: 16 / 9;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+}

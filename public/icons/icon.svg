@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E91E63;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#9C27B0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF9800;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="heartGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FCE4EC;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="512" height="512" rx="100" fill="url(#bgGradient)"/>
+
+  <!-- Heart shape -->
+  <path d="M256 180c-35.3 0-64 28.7-64 64 0 35.3 28.7 64 64 64s64-28.7 64-64c0-35.3-28.7-64-64-64zm0 96c-17.7 0-32-14.3-32-32s14.3-32 32-32 32 14.3 32 32-14.3 32-32 32z" fill="url(#heartGradient)"/>
+
+  <!-- Accent dots -->
+  <circle cx="140" cy="140" r="12" fill="#FF9800" opacity="0.3"/>
+  <circle cx="372" cy="372" r="8" fill="#FF9800" opacity="0.3"/>
+  <circle cx="140" cy="372" r="8" fill="#E91E63" opacity="0.2"/>
+  <circle cx="372" cy="140" r="12" fill="#9C27B0" opacity="0.2"/>
+
+  <!-- Subtle sparkle -->
+  <g fill="#FFFFFF" opacity="0.6">
+    <path d="M200 180l-3 6 6 0-3 6 6 0-3 6 6 0-3 6 6 0-3 6 6 0" transform="scale(0.5) translate(-200, -180)"/>
+    <path d="M300 320l-3 6 6 0-3 6 6 0-3 6 6 0-3 6 6 0-3 6 6 0" transform="scale(0.4) translate(-300, -320)"/>
+  </g>
+</svg>

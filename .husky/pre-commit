@@ -1,0 +1,15 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+# Run linting
+echo "🔍 Running ESLint..."
+pnpm lint
+
+# Run type checking
+echo "🔍 Running TypeScript type check..."
+pnpm type-check
+
+# Run tests (optional, can be slow)
+# pnpm test --passWithNoTests
+
+echo "✅ Pre-commit checks passed!"
